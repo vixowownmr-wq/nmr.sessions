@@ -15,9 +15,20 @@ console.log(sesionesGuardadas);
 function renderizarSesiones() {
     sessionsContainer.innerHTML  = "";
 
-    sesiones.forEach(function(sesion) {
+    sesiones.forEach(function(sesion, index) {
         const card = document.createElement("div");
         card.classList.add("session-card");
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Eliminar";
+        deleteButton.classList.add("delete-button");
+        deleteButton.addEventListener("click", function() {
+            sesiones.splice(index, 1);
+
+            localStorage.setItem("sesionesNMR", JSON.stringify(sesiones));
+
+            renderizarSesiones();
+        });
 
         const titulo = document.createElement("h3");
         const artistaInfo = document.createElement("p");
@@ -50,6 +61,7 @@ function renderizarSesiones() {
         card.appendChild(serviciosInfo);
         card.appendChild(estadoInfo);
         card.appendChild(saldoInfo);
+        card.appendChild(deleteButton);
 
         sessionsContainer.appendChild(card);
         
