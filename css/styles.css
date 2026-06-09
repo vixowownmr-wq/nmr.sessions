@@ -127,3 +127,19 @@ button:hover {
     color: #d4d4d4;
     margin-bottom: 6px;
 }
+
+.estado-pago {
+    font-weight: bold;
+}
+
+.session-card .pagado {
+    color: green;
+}
+
+.session-card .abonado {
+    color: orange;
+}
+
+.session-card .pendiente {
+    color: red;
+}
